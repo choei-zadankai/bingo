@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ビンゴ抽選マシン</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="layout">
+
+    <div id="leftArea">
+        <h1>ビンゴマシン</h1>
+
+        <div id="currentNumber">--</div>
+
+        <div class="buttonWrap">
+            <button id="startBtn">START</button>
+            <button id="fullscreenBtn">全画面</button>
+        </div>
+
+        <div id="tableContainer"></div>
+    </div>
+
+    <div id="rightArea">
+        <div id="historyBox"></div>
+    </div>
+
+</div>
+
+<!-- 黄金演出 -->
+<div id="bigEffect" class="hidden">
+    <div class="shine"></div>
+    <div id="bigNumber"></div>
+    <div class="particles"></div>
+</div>
+
+<audio id="soundStart" src="sound_start.mp3" preload="auto"></audio>
+<audio id="soundStop" src="sound_stop.mp3" preload="auto"></audio>
+
+<script src="script.js"></script>
+</body>
+</html>
