@@ -42,11 +42,17 @@ createNumberTable();
 // ======================================
 
 // 最初の列を作成
+// ======================================
+// 履歴管理（最大3列・1列12個）
+// ======================================
+
+// 最初の縦列
 let currentColumn = document.createElement("div");
 currentColumn.classList.add("history-column");
 historyBox.appendChild(currentColumn);
 
-// 履歴に追加（
+let columnCount = 1;
+
 function addHistoryItem(num) {
     const item = document.createElement("div");
     item.className = "history-item";
@@ -54,12 +60,21 @@ function addHistoryItem(num) {
 
     currentColumn.appendChild(item);
 
-    // ★ 10個になったら折り返し（新しい右列を作成）
-    if (currentColumn.children.length >= 10) {
-        const newCol = document.createElement("div");
-        newCol.classList.add("history-column");
-        historyBox.appendChild(newCol);
-        currentColumn = newCol;
+    // ● 12個超えたら次の列
+    if (currentColumn.children.length >= 12) {
+
+        // ● 最大3列まで
+        if (columnCount < 3) {
+            const newCol = document.createElement("div");
+            newCol.classList.add("history-column");
+            historyBox.appendChild(newCol);
+
+            currentColumn = newCol;
+            columnCount++;
+
+        } else {
+            console.log("履歴は最大3列です");
+        }
     }
 }
 
