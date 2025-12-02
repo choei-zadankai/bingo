@@ -154,7 +154,7 @@ button {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0,0,0,0.85);
+    background: rgba(0,102,255,0.90);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -173,11 +173,11 @@ button {
 #bigNumber {
     font-size: 400px;
     font-weight: bold;
-    color: gold;
+    color: #ffffff;
     text-shadow: 
-        0 0 40px gold,
-        0 0 80px #ffdd55,
-        0 0 120px #ffaa00;
+        0 0 40px #66ccff,
+        0 0 80px #33aaff,
+        0 0 120px #0099ff;
     animation: bigZoom 0.8s ease-out forwards;
     opacity: 0;
 }
@@ -192,7 +192,7 @@ button {
     width: 500px;
     height: 500px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(255,215,0,0.7), rgba(0,0,0,0) 70%);
+    background: radial-gradient(circle, rgba(0,170,255,0.7), rgba(0,0,0,0) 70%);
     filter: blur(20px);
     animation: shinePulse 1s infinite ease-in-out;
     position: absolute;
@@ -200,9 +200,9 @@ button {
 }
 
 @keyframes shinePulse {
-    0% { transform: scale(0.9); opacity: 0.6; }
-    50% { transform: scale(1.2); opacity: 1; }
-    100% { transform: scale(0.9); opacity: 0.6; }
+    0% { transform: scale(0.9); opacity: 0.6; filter: blur(15px);}
+    50% { transform: scale(1.2); opacity: 1; filter: blur(25px);}
+    100% { transform: scale(0.9); opacity: 0.6; filter: blur(15px);}
 }
 
 .particles {
@@ -218,15 +218,15 @@ button {
     position: absolute;
     width: 2px;
     height: 2px;
-    background: gold;
+    background:#ffffff;
     box-shadow:
-        50vw 30vh gold,
-        20vw 60vh gold,
-        80vw 50vh gold,
-        30vw 80vh gold,
-        60vw 20vh gold,
-        10vw 40vh gold,
-        90vw 10vh gold;
+        50vw 30vh #ffffff,
+        20vw 60vh #ccf2ff,
+        80vw 50vh #99e6ff,
+        30vw 80vh #ffffff,
+        60vw 20vh #ccefff,
+        10vw 40vh #ffffff,
+        90vw 10vh #b3ecff;
     animation: sparkle 1.2s linear infinite;
 }
 
@@ -234,3 +234,4 @@ button {
     0% { transform: translateY(0) scale(1); opacity:1; }
     100% { transform: translateY(200px) scale(0.5); opacity:0; }
 }
+
