@@ -58,24 +58,24 @@ function addHistoryItem(num) {
     item.className = "history-item";
     item.textContent = num;
 
-    currentColumn.appendChild(item);
-
-    // ● 12個超えたら次の列
+    // ① 現在の列に 12 個入っている場合 → 次の列へ
     if (currentColumn.children.length >= 12) {
 
-        // ● 最大3列まで
-        if (columnCount < 3) {
-            const newCol = document.createElement("div");
-            newCol.classList.add("history-column");
-            historyBox.appendChild(newCol);
-
-            currentColumn = newCol;
-            columnCount++;
-
-        } else {
-            console.log("履歴は最大3列です");
+        // ② 最大3列を超える場合 → 一番古い列を削除
+        if (historyBox.children.length >= 3) {
+            historyBox.removeChild(historyBox.firstElementChild);
         }
+
+        // ③ 新しい列を作成
+        const newCol = document.createElement("div");
+        newCol.classList.add("history-column");
+        historyBox.appendChild(newCol);
+
+        currentColumn = newCol;
     }
+
+    // アイテムを追加
+    currentColumn.appendChild(item);
 }
 
 
@@ -129,6 +129,34 @@ document.getElementById("startBtn").onclick = () => {
     }
 };
 
+// ========= 粒子生成関数 =========
+function createParticles() {
+    const area = document.getElementById("particles");
+    area.innerHTML = ""; // リセット
+
+    for (let i = 0; i < 60; i++) {  
+        const p = document.createElement("div");
+        p.classList.add("particle");
+
+        // 画面のどこかにランダム配置
+        const x = Math.random() * 100; // vw
+        const y = Math.random() * 100; // vh
+
+        p.style.setProperty("--x", `${x}vw`);
+        p.style.setProperty("--y", `${y}vh`);
+
+        // ランダム開始遅延
+        p.style.animationDelay = `${Math.random() * -1.2}s`;
+
+        // ⭐ ランダム速度（1.5〜3.0秒）
+        p.style.animationDuration = `${1.5 + Math.random() * 1.5}s`;
+
+
+        p.style.animationDelay = `${Math.random() * -1.2}s`;
+
+        area.appendChild(p);
+    }
+}
 
 // ======================================
 // STOP処理
@@ -159,6 +187,8 @@ function stopDraw() {
     // 黄金演出
     bigNumber.textContent = selectedNumber;
     bigEffect.classList.add("active");
+
+    createParticles();
 
     setTimeout(() => {
         bigEffect.classList.remove("active");
